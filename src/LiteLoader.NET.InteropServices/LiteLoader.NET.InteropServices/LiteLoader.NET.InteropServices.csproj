@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LiteLoader.NET.InteropServices.Native\LiteLoader.NET.InteropServices.Native.vcxproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="LiteLoader.NET.InteropServices.Native">
+      <HintPath>..\x64\Debug\LiteLoader.NET.InteropServices.Native.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
