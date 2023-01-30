@@ -25,15 +25,27 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v1.0.2
-    - name: Restore dependencies
-      run: dotnet restore
-    - name: Build
+
+    - name: Build Native
       working-directory: ${{env.GITHUB_WORKSPACE}}
       # Add additional options to the MSBuild command line here (like platform or verbosity level).
       # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
-      run: msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}}
+      run: msbuild LiteLoader.NET.InteropServices.Native.sln /m /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}}
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 7.0.x
+
+    - name: Restore Dependencies
+      run: dotnet restore LiteLoader.NET.InteropServices.sln
+
+    -name: Build
+      run: dotnet build LiteLoader.NET.InteropServices.sln --no-restore
+
     - name: Update Modules
       run: |
         git config --global user.name "github-actions[bot]"
