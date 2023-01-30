@@ -30,8 +30,7 @@ jobs:
       uses: microsoft/setup-msbuild@v1.0.2
 
     - name: Restore Dependencies
-      run: msbuild /t:restore -p:RestoreGraphProjectInput=src/LiteLoader.NET.InteropServices/LiteLoader.NET.InteropServices.csproj^
-            /t:rebuild /p:configuration=release /p:platform=x64
+      run: msbuild /t:restore -p:RestoreGraphProjectInput=.\src\LiteLoader.NET.InteropServices\LiteLoader.NET.InteropServices.csproj /t:rebuild /p:configuration=release /p:platform=x64 .\LiteLoader.NET.InteropServices.sln
 
     - name: Build
       working-directory: ${{env.GITHUB_WORKSPACE}}
