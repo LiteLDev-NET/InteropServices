@@ -75,8 +75,8 @@ if "%LLNET_MODULE_NOW_STATUS%" neq "" (
         git push origin %LLNET_MODULE_NOW_BRANCH%
         git push --tags origin %LLNET_MODULE_NOW_BRANCH%
     ) else (
-        git push https://%USERNAME%:%REPO_KEY%github.com/LiteLDev-NET/Modules.git %LLNET_MODULE_NOW_BRANCH%
-        git push --tags https://%USERNAME%:%REPO_KEY%github.com/LiteLDev-NET/Modules.git %LLNET_MODULE_NOW_BRANCH%
+        git push https://%USERNAME%:%REPO_KEY%@github.com/LiteLDev-NET/Modules.git %LLNET_MODULE_NOW_BRANCH%
+        git push --tags https://%USERNAME%:%REPO_KEY%@github.com/LiteLDev-NET/Modules.git %LLNET_MODULE_NOW_BRANCH%
     )
     cd ..
     echo.
