@@ -15,6 +15,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\LiteLoader.NET.InteropServices.Native\LiteLoader.NET.InteropServices.Native.vcxproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="LiteLoader.NET.InteropServices.Native">
       <HintPath>..\..\x64\Release\LiteLoader.NET.InteropServices.Native.dll</HintPath>
     </Reference>
