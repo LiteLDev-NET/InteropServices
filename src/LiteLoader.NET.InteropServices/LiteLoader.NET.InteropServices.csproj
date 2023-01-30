@@ -5,6 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,7 +14,7 @@
 
   <ItemGroup>
     <Reference Include="LiteLoader.NET.InteropServices.Native">
-      <HintPath>..\..\x64\Debug\LiteLoader.NET.InteropServices.Native.dll</HintPath>
+      <HintPath>..\..\x64\Release\LiteLoader.NET.InteropServices.Native.dll</HintPath>
     </Reference>
   </ItemGroup>
 

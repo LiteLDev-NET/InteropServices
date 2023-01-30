@@ -4,10 +4,4 @@
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="MemoryAPI.cpp" />
   </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="app.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Resource.h" />
-  </ItemGroup>
 </Project>
