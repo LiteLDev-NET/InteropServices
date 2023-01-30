@@ -43,7 +43,7 @@ jobs:
     - name: Restore Dependencies
       run: dotnet restore LiteLoader.NET.InteropServices.sln
 
-    -name: Build
+    - name: Build
       run: dotnet build LiteLoader.NET.InteropServices.sln --no-restore
 
     - name: Update Modules
