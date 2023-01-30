@@ -44,7 +44,7 @@ jobs:
       run: dotnet restore ./src/LiteLoader.NET.InteropServices/LiteLoader.NET.InteropServices.csproj
 
     - name: Build
-      run: dotnet build ./src/LiteLoader.NET.InteropServices/LiteLoader.NET.InteropServices.csproj --no-restore
+      run: dotnet build ./src/LiteLoader.NET.InteropServices/LiteLoader.NET.InteropServices.csproj --configuration Release --no-restore
 
     - name: Update Modules
       run: |
