@@ -47,23 +47,22 @@ public unsafe struct pointer<T> : IConstructableCppClass<pointer<T>> where T : I
     /// </summary>
     public void Delete()
     {
-        var pointer = ptr.ToPointer();
         if (ICppClassHelper<T>.isValueType)
         {
             if (ICppClassHelper<T>.isICppClass)
             {
                 var instance = ICppClassHelper<T>._Value_type_funcptr_def.construct_instance(
-                    ref _EmptyTval!, Unsafe.Read<nint>(pointer), false);
+                    ref _EmptyTval!, ptr, false);
                 ICppClassHelper<T>._Value_type_funcptr_def.dtor(ref instance);
             }
         }
         else
         {
             var instance = ICppClassHelper<T>._Ref_type_funcptr_def.construct_instance(
-                _EmptyTval, Unsafe.Read<nint>(pointer), false);
+                _EmptyTval, ptr, false);
             ICppClassHelper<T>._Ref_type_funcptr_def.dtor(instance);
         }
-        MemoryAPI.operator_delete(Unsafe.Read<nint>(pointer).ToPointer());
+        MemoryAPI.operator_delete(ptr.ToPointer());
     }
 
     public unsafe void DeleteArray()
@@ -112,17 +111,17 @@ public unsafe struct pointer<T> : IConstructableCppClass<pointer<T>> where T : I
 
     public T Dereference()
     {
-        if(ICppClassHelper<T>.isValueType)
+        if (ICppClassHelper<T>.isValueType)
         {
-            if(ICppClassHelper<T>.isICppClass)
+            if (ICppClassHelper<T>.isICppClass)
             {
-                return ICppClassHelper<T>._Value_type_funcptr_def.construct_instance(ref _EmptyTval, Unsafe.Read<nint>(ptr.ToPointer()), false);
+                return ICppClassHelper<T>._Value_type_funcptr_def.construct_instance(ref _EmptyTval, ptr, false);
             }
             return Unsafe.Read<T>(ptr.ToPointer());
         }
         else
         {
-            return ICppClassHelper<T>._Ref_type_funcptr_def.construct_instance(_EmptyTval, Unsafe.Read<nint>(ptr.ToPointer()), false);
+            return ICppClassHelper<T>._Ref_type_funcptr_def.construct_instance(_EmptyTval, ptr, false);
         }
     }
 }

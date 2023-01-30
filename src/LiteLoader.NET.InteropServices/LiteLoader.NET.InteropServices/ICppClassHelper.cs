@@ -85,17 +85,23 @@ public interface ICppClassHelper<T> where T : new()
 
     unsafe static void* _get_method_fptr([MarshalAs(UnmanagedType.U1)] bool _ThrowExc, string _Name, Type[] _Params)
     {
-        MethodInfo method = typeof(T).GetMethod(_Name, _Params)!;
-        if (!(method == null) || !_ThrowExc)
-        {
-            void* ptr = method!.MethodHandle.GetFunctionPointer().ToPointer();
-            if (ptr != null || !_ThrowExc)
-            {
-                return ptr;
-            }
-        }
-        string fullName = typeof(T).FullName!;
-        throw new InvalidTypeException($"{fullName} missing Method '{_Name}'.");
+        var _Fty = typeof(T).GetMethod(_Name, _Params);
+
+        if (_Fty == null)
+            goto THROW;
+
+        var ret = _Fty.MethodHandle.GetFunctionPointer().ToPointer();
+
+        if (ret == null)
+            goto THROW;
+
+        return ret;
+
+    THROW:
+        if (_ThrowExc)
+            throw new InvalidTypeException(string.Format("{0} missing Method '{1}'.", typeof(T).FullName, _Name));
+        else
+            return null;
     }
 
     unsafe static _Value_type_funcptr_def _handle_value_type(Type _Ty)
@@ -150,7 +156,7 @@ public interface ICppClassHelper<T> where T : new()
             Type type6 = (array4[1] = typeof(bool));
             string name8 = "SetNativePointer";
             _Value_type_funcptr_def.set_native_pointer = (delegate*<ref T, nint, bool, void>)_get_method_fptr(_ThrowExc: true, name8, array4);
-            
+
             Type[] array5 = new Type[2];
             array5[0] = typeof(nint);
             array5[1] = typeof(bool);
