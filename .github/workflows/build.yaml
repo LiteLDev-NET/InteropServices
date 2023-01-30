@@ -29,22 +29,15 @@ jobs:
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v1.0.2
 
-    - name: Build Native
+    - name: Restore Dependencies
+      run: msbuild /t:restore -p:RestoreGraphProjectInput=./src/LiteLoader.NET.InteropServices/LiteLoader.NET.InteropServices.csproj^
+            /t:rebuild /p:configuration=release /p:platform=x64
+
+    - name: Build
       working-directory: ${{env.GITHUB_WORKSPACE}}
       # Add additional options to the MSBuild command line here (like platform or verbosity level).
       # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
       run: msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}}
-
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: 7.0.x
-
-    - name: Restore Dependencies
-      run: dotnet restore ./src/LiteLoader.NET.InteropServices/LiteLoader.NET.InteropServices.csproj
-
-    - name: Build
-      run: dotnet build ./src/LiteLoader.NET.InteropServices/LiteLoader.NET.InteropServices.csproj --configuration Release --no-restore
 
     - name: Update Modules
       run: |

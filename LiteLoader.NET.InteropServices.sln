@@ -10,6 +10,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LiteLoader.NET.InteropServices.Native", "src\LiteLoader.NET.InteropServices.Native\LiteLoader.NET.InteropServices.Native.vcxproj", "{224D43F7-FED1-4592-BF7D-2DF6C6D7429B}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiteLoader.NET.InteropServices", "src\LiteLoader.NET.InteropServices\LiteLoader.NET.InteropServices.csproj", "{58E91D4E-2656-4B26-BDB5-411344BDCC52}"
+	ProjectSection(ProjectDependencies) = postProject
+		{224D43F7-FED1-4592-BF7D-2DF6C6D7429B} = {224D43F7-FED1-4592-BF7D-2DF6C6D7429B}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Release|x64 = Release|x64
@@ -17,6 +22,8 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{224D43F7-FED1-4592-BF7D-2DF6C6D7429B}.Release|x64.ActiveCfg = Release|x64
 		{224D43F7-FED1-4592-BF7D-2DF6C6D7429B}.Release|x64.Build.0 = Release|x64
+		{58E91D4E-2656-4B26-BDB5-411344BDCC52}.Release|x64.ActiveCfg = Release|x64
+		{58E91D4E-2656-4B26-BDB5-411344BDCC52}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
