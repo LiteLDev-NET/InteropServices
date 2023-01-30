@@ -33,7 +33,7 @@ jobs:
       working-directory: ${{env.GITHUB_WORKSPACE}}
       # Add additional options to the MSBuild command line here (like platform or verbosity level).
       # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
-      run: msbuild LiteLoader.NET.InteropServices.Native.sln /m /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}}
+      run: msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}}
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
@@ -41,10 +41,10 @@ jobs:
         dotnet-version: 7.0.x
 
     - name: Restore Dependencies
-      run: dotnet restore LiteLoader.NET.InteropServices.sln
+      run: dotnet restore ./src/LiteLoader.NET.InteropServices/LiteLoader.NET.InteropServices.csproj
 
     - name: Build
-      run: dotnet build LiteLoader.NET.InteropServices.sln --no-restore
+      run: dotnet build ./src/LiteLoader.NET.InteropServices/LiteLoader.NET.InteropServices.csproj --no-restore
 
     - name: Update Modules
       run: |
