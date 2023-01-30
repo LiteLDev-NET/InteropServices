@@ -18,7 +18,7 @@ set LLNET_MODULE_REMOTE_PATH=https://github.com/LiteLDev-NET/Modules.git
 @REM )
 
 
-echo [INFO] Fetching LL.NET.Modules to GitHub ...
+echo [INFO] Fetching InteropServices to GitHub ...
 echo.
 
 for /f "delims=" %%i in ('git rev-parse --abbrev-ref HEAD') do set LLNET_MODULE_NOW_BRANCH=%%i
@@ -30,8 +30,8 @@ echo LLNET_MODULE_NOW_TAG_LONG %LLNET_MODULE_NOW_TAG_LONG%
 echo LLNET_MODULE_NOW_TAG %LLNET_MODULE_NOW_TAG%
 echo.
 
-if not exist Modules/refs/LiteLoader.NET.InteropServices.dll (
-    echo [WARNING] Modules files no found. Pulling from remote...
+if not exist Modules/InteropServices/LiteLoader.NET.InteropServices.dll (
+    echo [WARNING] InteropServices files no found. Pulling from remote...
     echo.
     git clone %LLNET_MODULE_REMOTE_PATH%
 )
@@ -43,16 +43,16 @@ git checkout %LLNET_MODULE_NOW_BRANCH%
 cd ..
 
 echo.
-echo [INFO] Fetching Modules to GitHub finished
+echo [INFO] Fetching InteropServices to GitHub finished
 echo.
 
-@REM remove refs directory in Modules
-echo [INFO] Removing Modules\refs\LiteLoader
-rd /s /q Modules\refs\LiteLoader
+@REM remove InteropServices directory in Modules
+echo [INFO] Removing Modules\InteropServices
+rd /s /q Modules\InteropServices
 
-@REM copy all SDK to Modules
-xcopy /e /y /i /q src\LiteLoader.NET.InteropServices\bin\Release\net7.0\LiteLoader.NET.InteropServices.dll Modules\refs\
-xcopy /e /y /i /q src\LiteLoader.NET.InteropServices\bin\Release\net7.0\LiteLoader.NET.InteropServices.Native.dll Modules\refs\
+@REM copy InteropServices to Modules
+xcopy /e /y /i /q src\LiteLoader.NET.InteropServices\bin\Release\net7.0\LiteLoader.NET.InteropServices.dll Modules\InteropServices\
+xcopy /e /y /i /q src\LiteLoader.NET.InteropServices\bin\Release\net7.0\LiteLoader.NET.InteropServices.Native.dll Modules\InteropServices\
 
 cd Modules
 for /f "delims=" %%i in ('git status . -s') do set LLNET_MODULE_NOW_STATUS=%%i
@@ -61,12 +61,12 @@ if "%LLNET_MODULE_NOW_STATUS%" neq "" (
     echo.
     git add .
     if "%LLNET_MODULE_NOW_BRANCH%" == "main" (
-        git commit -m "From LiteLoader.NET %LLNET_MODULE_NOW_TAG%"
+        git commit -m "From InteropServices %LLNET_MODULE_NOW_TAG%"
         if [%2] == [release] (
             git tag %LLNET_MODULE_NOW_TAG%
         )
     ) else (
-        git commit -m "From LiteLoader.NET %LLNET_MODULE_NOW_TAG_LONG%"
+        git commit -m "From InteropServices %LLNET_MODULE_NOW_TAG_LONG%"
     )
     echo.
     echo [INFO] Pushing to origin...
@@ -88,7 +88,7 @@ if "%LLNET_MODULE_NOW_STATUS%" neq "" (
     echo.
     echo.
     echo [INFO] No modified files found.
-    echo [INFO] No need to Upgrade Modules.
+    echo [INFO] No need to Upgrade InteropServices.
     goto Finish
 )
 
