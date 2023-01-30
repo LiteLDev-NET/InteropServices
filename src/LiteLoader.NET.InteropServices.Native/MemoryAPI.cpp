@@ -113,5 +113,10 @@ namespace LiteLoader::NET::InteropServices::Native
         {
             return operator_delete_array(&ptr);
         }
+
+        static void memmove(void* dst, void* src, size_t size)
+        {
+            ::memmove(dst, src, size);
+        }
     };
 }
