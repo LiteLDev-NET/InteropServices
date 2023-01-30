@@ -1,18 +1,36 @@
-ï»¿using namespace System;
 using namespace System::Reflection;
 using namespace System::Runtime::CompilerServices;
 using namespace System::Runtime::InteropServices;
-using namespace System::Security::Permissions;
 
-[assembly:AssemblyTitleAttribute(L"LiteLoaderNETInteropServicesNative")];
-[assembly:AssemblyDescriptionAttribute(L"")];
-[assembly:AssemblyConfigurationAttribute(L"")];
-[assembly:AssemblyCompanyAttribute(L"")];
-[assembly:AssemblyProductAttribute(L"LiteLoaderNETInteropServicesNative")];
-[assembly:AssemblyCopyrightAttribute(L"ç‰ˆæƒæ‰€æœ‰(c)  2023")];
-[assembly:AssemblyTrademarkAttribute(L"")];
-[assembly:AssemblyCultureAttribute(L"")];
+// ÓĞ¹Ø³ÌĞò¼¯µÄÒ»°ãĞÅÏ¢ÓÉÒÔÏÂ
+// ¿ØÖÆ¡£¸ü¸ÄÕâĞ©ÌØĞÔÖµ¿ÉĞŞ¸Ä
+// Óë³ÌĞò¼¯¹ØÁªµÄĞÅÏ¢¡£
+[assembly:AssemblyTitle("")];
+[assembly:AssemblyDescription("")] ;
+[assembly:AssemblyConfiguration("")] ;
+[assembly:AssemblyCompany("")] ;
+[assembly:AssemblyProduct("")] ;
+[assembly:AssemblyCopyright("")] ;
+[assembly:AssemblyTrademark("")] ;
+[assembly:AssemblyCulture("")] ;
 
-[assembly:AssemblyVersionAttribute(L"1.0.*")];
-
+// ½« ComVisible ÉèÖÃÎª false »áÊ¹´Ë³ÌĞò¼¯ÖĞµÄÀàĞÍ
+//¶Ô COM ×é¼ş²»¿É¼û¡£Èç¹ûĞèÒª´Ó COM ·ÃÎÊ´Ë³ÌĞò¼¯ÖĞµÄÀàĞÍ
+//Çë½«´ËÀàĞÍµÄ ComVisible ÌØĞÔÉèÖÃÎª true¡£
 [assembly:ComVisible(false)];
+
+// Èç¹û´ËÏîÄ¿Ïò COM ¹«¿ª£¬ÔòÏÂÁĞ GUID ÓÃÓÚÀàĞÍ¿âµÄ ID
+[assembly:Guid("992AD8D6-3EC3-27B3-5138-9DBE0F04ADE9")] ;
+
+// ³ÌĞò¼¯µÄ°æ±¾ĞÅÏ¢ÓÉÏÂÁĞËÄ¸öÖµ×é³É:
+//
+//      Ö÷°æ±¾
+//      ´Î°æ±¾
+//      Éú³ÉºÅ
+//      ĞŞ¶©ºÅ
+//
+//¿ÉÒÔÖ¸¶¨ËùÓĞÕâĞ©Öµ£¬Ò²¿ÉÒÔÊ¹ÓÃ¡°Éú³ÉºÅ¡±ºÍ¡°ĞŞ¶©ºÅ¡±µÄÄ¬ÈÏÖµ
+//Í¨¹ıÊ¹ÓÃ "*"£¬ÈçÏÂËùÊ¾:
+// [assembly: AssemblyVersion("1.0.*")]
+[assembly:AssemblyVersion("1.0.0.0")];
+[assembly:AssemblyFileVersion("1.0.0.0")] ;
