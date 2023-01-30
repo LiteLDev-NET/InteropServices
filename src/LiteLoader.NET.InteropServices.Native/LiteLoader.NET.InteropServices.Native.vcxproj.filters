@@ -5,9 +5,6 @@
     <ClCompile Include="MemoryAPI.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="app.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <ResourceCompile Include="app.rc" />
   </ItemGroup>
   <ItemGroup>
