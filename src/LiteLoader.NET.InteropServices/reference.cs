@@ -54,15 +54,11 @@ public unsafe struct reference<T> : IConstructableCppClass<reference<T>> where T
     {
         if (ICppClassHelper<T>.isValueType)
         {
-            if (ICppClassHelper<T>.isICppClass)
-            {
-                return ICppClassHelper<T>._Value_type_funcptr_def.construct_instance(ref _EmptyTval, Unsafe.Read<nint>(ptr.ToPointer()), false);
-            }
-            return Unsafe.Read<T>(ptr.ToPointer());
+            return ICppClassHelper<T>._Value_type_funcptr_def.construct_instance(ref _EmptyTval, ptr, false);
         }
         else
         {
-            return ICppClassHelper<T>._Ref_type_funcptr_def.construct_instance(_EmptyTval, Unsafe.Read<nint>(ptr.ToPointer()), false);
+            return ICppClassHelper<T>._Ref_type_funcptr_def.construct_instance(_EmptyTval, ptr, false);
         }
     }
 }

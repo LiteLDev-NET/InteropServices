@@ -58,12 +58,9 @@ public unsafe struct pointer<T> : IConstructableCppClass<pointer<T>> where T : I
     {
         if (ICppClassHelper<T>.isValueType)
         {
-            if (ICppClassHelper<T>.isICppClass)
-            {
-                var instance = ICppClassHelper<T>._Value_type_funcptr_def.construct_instance(
-                    ref _EmptyTval!, ptr, false);
-                ICppClassHelper<T>._Value_type_funcptr_def.dtor(ref instance);
-            }
+            var instance = ICppClassHelper<T>._Value_type_funcptr_def.construct_instance(
+                ref _EmptyTval!, ptr, false);
+            ICppClassHelper<T>._Value_type_funcptr_def.dtor(ref instance);
         }
         else
         {
@@ -77,10 +74,6 @@ public unsafe struct pointer<T> : IConstructableCppClass<pointer<T>> where T : I
     public unsafe void DeleteArray()
     {
         byte* pointer = (byte*)ptr.ToPointer();
-        if (!ICppClassHelper<T>.isICppClass)
-        {
-            return;
-        }
         uint num = *(uint*)((ulong)(nint)pointer - 4uL);
         if (num + 39 <= num)
         {
@@ -122,11 +115,7 @@ public unsafe struct pointer<T> : IConstructableCppClass<pointer<T>> where T : I
     {
         if (ICppClassHelper<T>.isValueType)
         {
-            if (ICppClassHelper<T>.isICppClass)
-            {
-                return ICppClassHelper<T>._Value_type_funcptr_def.construct_instance(ref _EmptyTval, ptr, false);
-            }
-            return Unsafe.Read<T>(ptr.ToPointer());
+            return ICppClassHelper<T>._Value_type_funcptr_def.construct_instance(ref _EmptyTval, ptr, false);
         }
         else
         {
