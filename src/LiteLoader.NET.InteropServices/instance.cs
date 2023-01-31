@@ -17,14 +17,32 @@ public unsafe struct instance<T> : IConstructableCppClass<instance<T>> where T :
     public nint NativePointer { get => ptr; set => ptr = value; }
     public bool OwnsNativeInstance { get { return true; } set { return; } }
 
-    public static implicit operator instance<T>(T val)
+    public static explicit operator instance<T>(T val)
     {
+        if (!val.OwnsNativeInstance)
+            throw new InvalidOperationException($"{typeof(T).FullName}.OwnsNativeInstance equals false.");
+
+        val.OwnsNativeInstance = false;
+        val.NativePointer = nint.Zero;
+
+        (val as IDisposable)?.Dispose();
+
         return new instance<T>(val.NativePointer);
     }
 
     public static implicit operator T(instance<T> val)
     {
         return val.Get();
+    }
+
+    public static implicit operator pointer<T>(instance<T> val)
+    {
+        return new pointer<T>(val.ptr);
+    }
+    
+    public static implicit operator reference<T>(instance<T> val)
+    {
+        return new reference<T>(val.ptr);
     }
 
     public instance<T> ConstructInstance(nint ptr, bool ownsInstance)

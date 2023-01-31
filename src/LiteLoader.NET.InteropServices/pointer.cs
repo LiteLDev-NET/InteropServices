@@ -16,7 +16,7 @@ public unsafe struct pointer<T> : IConstructableCppClass<pointer<T>> where T : I
     }
 
     public nint NativePointer { get => ptr; set => ptr = value; }
-    public bool OwnsNativeInstance { get { return true; } set { return; } }
+    public bool OwnsNativeInstance { get { return false; } set { return; } }
 
     public static implicit operator pointer<T>(T val)
     {

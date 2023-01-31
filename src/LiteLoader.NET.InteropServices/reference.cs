@@ -15,7 +15,7 @@ public unsafe struct reference<T> : IConstructableCppClass<reference<T>> where T
     }
 
     public nint NativePointer { get => ptr; set => ptr = value; }
-    public bool OwnsNativeInstance { get { return true; } set { return; } }
+    public bool OwnsNativeInstance { get { return false; } set { return; } }
 
     public static implicit operator reference<T>(T val)
     {
