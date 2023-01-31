@@ -10,14 +10,12 @@ namespace LiteLoader.NET.InteropServices;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct enum_type<T> where T : struct, Enum
 {
-    private T value;
+    public T Value;
 
     private enum_type(T value)
     {
-        this.value = value;
+        Value = value;
     }
-
-    public T Value { get => value; set => this.value = value; }
 
     public static implicit operator enum_type<T>(T value)
     {
@@ -26,6 +24,6 @@ public unsafe struct enum_type<T> where T : struct, Enum
 
     public static explicit operator T(enum_type<T> value)
     {
-        return value.value;
+        return value.Value;
     }
 }
