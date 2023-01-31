@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace LiteLoader.NET.InteropServices;
 
@@ -16,8 +17,23 @@ public unsafe struct reference<T> : IConstructableCppClass<reference<T>> where T
     [FieldOffset(0)]
     private nint ptr;
 
+    internal reference(nint p)
+    {
+        ptr = p;
+    }
+
     public nint NativePointer { get => ptr; set => ptr = value; }
     public bool OwnsNativeInstance { get { return true; } set { return; } }
+
+    public static implicit operator reference<T>(T val)
+    {
+        return new reference<T>(val.NativePointer);
+    }
+    
+    public static explicit operator T (reference<T> val)
+    {
+        return val.Dereference();
+    }
 
     public reference<T> ConstructInstance(nint ptr, bool ownsInstance)
     {

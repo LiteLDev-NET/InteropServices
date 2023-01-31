@@ -16,8 +16,23 @@ public unsafe struct pointer<T> : IConstructableCppClass<pointer<T>> where T : I
     [FieldOffset(0)]
     private nint ptr;
 
+    internal pointer(nint p)
+    {
+        ptr = p;
+    }
+
     public nint NativePointer { get => ptr; set => ptr = value; }
     public bool OwnsNativeInstance { get { return true; } set { return; } }
+
+    public static implicit operator pointer<T>(T val)
+    {
+        return new pointer<T>(val.NativePointer);
+    }
+
+    public static explicit operator T(pointer<T> val)
+    {
+        return val.Dereference();
+    }
 
     public pointer<T> ConstructInstance(nint ptr, bool ownsInstance)
     {
