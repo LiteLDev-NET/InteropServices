@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LiteLoader.NET.InteropServices;
+﻿namespace LiteLoader.NET.InteropServices;
 
 public interface IPointerConstructable<T> where T : new()
 {

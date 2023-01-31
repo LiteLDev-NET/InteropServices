@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LiteLoader.NET.InteropServices.OrignalData;
+﻿namespace LiteLoader.NET.InteropServices.OrignalData;
 
 [System.AttributeUsage(AttributeTargets.Method | AttributeTargets.Field | AttributeTargets.Property, Inherited = false, AllowMultiple = false)]
 public sealed class AccessTypeAttribute : Attribute

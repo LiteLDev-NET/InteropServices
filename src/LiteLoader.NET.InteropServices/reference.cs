@@ -1,13 +1,5 @@
-﻿using LiteLoader.NET.InteropServices.Native;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace LiteLoader.NET.InteropServices;
 
@@ -29,8 +21,8 @@ public unsafe struct reference<T> : IConstructableCppClass<reference<T>> where T
     {
         return new reference<T>(val.NativePointer);
     }
-    
-    public static explicit operator T (reference<T> val)
+
+    public static explicit operator T(reference<T> val)
     {
         return val.Dereference();
     }
