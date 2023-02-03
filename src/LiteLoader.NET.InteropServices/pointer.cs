@@ -1,13 +1,9 @@
 ﻿using LiteLoader.NET.InteropServices.Native;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 
 namespace LiteLoader.NET.InteropServices;
 
-[StructLayout(LayoutKind.Explicit, Pack = 1, Size = 8)]
 public unsafe struct pointer<T> : IConstructableCppClass<pointer<T>> where T : IConstructableCppClass<T>, new()
 {
-    [FieldOffset(0)]
     private nint ptr;
 
     internal pointer(nint p)
