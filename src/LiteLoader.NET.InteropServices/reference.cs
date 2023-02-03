@@ -1,12 +1,8 @@
-﻿using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
+﻿namespace LiteLoader.NET.InteropServices;
 
-namespace LiteLoader.NET.InteropServices;
 
-[StructLayout(LayoutKind.Explicit, Pack = 1, Size = 8)]
 public unsafe struct reference<T> : IConstructableCppClass<reference<T>> where T : IConstructableCppClass<T>, new()
 {
-    [FieldOffset(0)]
     private nint ptr;
 
     internal reference(nint p)

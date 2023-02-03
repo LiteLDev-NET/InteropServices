@@ -1,12 +1,7 @@
-﻿using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
+﻿namespace LiteLoader.NET.InteropServices;
 
-namespace LiteLoader.NET.InteropServices;
-
-[StructLayout(LayoutKind.Explicit, Pack = 1, Size = 8)]
 public unsafe struct instance<T> : IConstructableCppClass<instance<T>> where T : IConstructableCppClass<T>, new()
 {
-    [FieldOffset(0)]
     private nint ptr;
 
     internal instance(nint p)

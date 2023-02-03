@@ -1,12 +1,10 @@
 ﻿using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 
 namespace LiteLoader.NET.InteropServices.Gsl;
 
-[StructLayout(LayoutKind.Explicit, Pack = 1, Size = 8)]
+
 public unsafe struct not_null<T> : IConstructableCppClass<not_null<T>> where T : IConstructableCppClass<T>, new()
 {
-    [FieldOffset(0)]
     private nint ptr;
 
     internal not_null(nint p)
