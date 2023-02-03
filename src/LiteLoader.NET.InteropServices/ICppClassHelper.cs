@@ -7,9 +7,9 @@ public interface ICppClassHelper<T> where T : new()
 {
     public struct _Value_type_funcptr_def
     {
-        public unsafe static delegate*<ref T, nint> get_intptr;
+        public unsafe static delegate*<ref T, nint> get_NativePointer;
 
-        public unsafe static delegate*<ref T, nint, void> set_intptr;
+        public unsafe static delegate*<ref T, nint, void> set_NativePointer;
 
         public unsafe static delegate*<ref T, bool> get_own_instance;
 
@@ -28,9 +28,9 @@ public interface ICppClassHelper<T> where T : new()
 
     public struct _Ref_type_funcptr_def
     {
-        public unsafe static delegate*<T, nint> get_intptr;
+        public unsafe static delegate*<T, nint> get_NativePointer;
 
-        public unsafe static delegate*<T, nint, void> set_intptr;
+        public unsafe static delegate*<T, nint, void> set_NativePointer;
 
         public unsafe static delegate*<T, bool> get_own_instance;
 
@@ -108,8 +108,8 @@ public interface ICppClassHelper<T> where T : new()
                 isValueType = true;
                 isPointer = true;
                 Type[] @params = Array.Empty<Type>();
-                string name = "get_Intptr";
-                _Value_type_funcptr_def.get_intptr = (delegate*<ref T, nint>)_get_method_fptr(_ThrowExc: true, name, @params);
+                string name = "get_NativePointer";
+                _Value_type_funcptr_def.get_NativePointer = (delegate*<ref T, nint>)_get_method_fptr(_ThrowExc: true, name, @params);
                 Type[] array = new Type[2];
                 Type type = (array[0] = typeof(nint));
                 Type type2 = (array[1] = typeof(bool));
@@ -123,12 +123,12 @@ public interface ICppClassHelper<T> where T : new()
         {
             isICppClass = true;
             Type[] params2 = Array.Empty<Type>();
-            string name3 = "get_Intptr";
-            _Value_type_funcptr_def.get_intptr = (delegate*<ref T, nint>)_get_method_fptr(_ThrowExc: true, name3, params2);
+            string name3 = "get_NativePointer";
+            _Value_type_funcptr_def.get_NativePointer = (delegate*<ref T, nint>)_get_method_fptr(_ThrowExc: true, name3, params2);
             Type[] array2 = new Type[1];
             Type type3 = (array2[0] = typeof(nint));
-            string name4 = "set_Intptr";
-            _Value_type_funcptr_def.set_intptr = (delegate*<ref T, nint, void>)_get_method_fptr(_ThrowExc: true, name4, array2);
+            string name4 = "set_NativePointer";
+            _Value_type_funcptr_def.set_NativePointer = (delegate*<ref T, nint, void>)_get_method_fptr(_ThrowExc: true, name4, array2);
             Type[] params3 = Array.Empty<Type>();
             string name5 = "get_OwnsNativeInstance";
             _Value_type_funcptr_def.get_own_instance = (delegate*<ref T, bool>)_get_method_fptr(_ThrowExc: true, name5, params3);
@@ -194,12 +194,12 @@ public interface ICppClassHelper<T> where T : new()
             string name = "GetClassSize";
             type_size = ((delegate*<T, ulong>)_get_method_fptr(_ThrowExc: true, name, @params))(default!);
             Type[] params2 = Array.Empty<Type>();
-            string name2 = "get_Intptr";
-            _Ref_type_funcptr_def.get_intptr = (delegate*<T, nint>)_get_method_fptr(_ThrowExc: true, name2, params2);
+            string name2 = "get_NativePointer";
+            _Ref_type_funcptr_def.get_NativePointer = (delegate*<T, nint>)_get_method_fptr(_ThrowExc: true, name2, params2);
             Type[] array = new Type[1];
             Type type = (array[0] = typeof(nint));
-            string name3 = "set_Intptr";
-            _Ref_type_funcptr_def.set_intptr = (delegate*<T, nint, void>)_get_method_fptr(_ThrowExc: true, name3, array);
+            string name3 = "set_NativePointer";
+            _Ref_type_funcptr_def.set_NativePointer = (delegate*<T, nint, void>)_get_method_fptr(_ThrowExc: true, name3, array);
             Type[] params3 = Array.Empty<Type>();
             string name4 = "get_OwnsNativeInstance";
             _Ref_type_funcptr_def.get_own_instance = (delegate*<T, bool>)_get_method_fptr(_ThrowExc: true, name4, params3);
