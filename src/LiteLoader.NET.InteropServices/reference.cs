@@ -18,7 +18,7 @@ public unsafe struct reference<T> : IConstructableCppClass<reference<T>> where T
         return new reference<T>(val.NativePointer);
     }
 
-    public static explicit operator T(reference<T> val)
+    public static implicit operator T(reference<T> val)
     {
         return val.Dereference();
     }
