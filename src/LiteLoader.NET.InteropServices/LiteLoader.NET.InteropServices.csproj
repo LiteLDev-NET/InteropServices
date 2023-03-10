@@ -14,10 +14,4 @@
     <None Include="..\..\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="LiteLoader.NET.InteropServices.Native">
-      <HintPath>..\..\x64\Release\LiteLoader.NET.InteropServices.Native.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 </Project>
