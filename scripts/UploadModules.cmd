@@ -52,7 +52,7 @@ rd /s /q Modules\InteropServices
 
 @REM copy InteropServices to Modules
 xcopy /e /y /i /q src\LiteLoader.NET.InteropServices\bin\x64\Release\net7.0\LiteLoader.NET.InteropServices.dll Modules\InteropServices\
-xcopy /e /y /i /q src\LiteLoader.NET.InteropServices\bin\x64\Release\net7.0\LiteLoader.NET.InteropServices.Native.dll Modules\InteropServices\
+xcopy /e /y /i /q src\LiteLoader.NET.InteropServices\x64\Release\LiteLoader.NET.InteropServices.Native.dll Modules\InteropServices\
 
 cd Modules
 for /f "delims=" %%i in ('git status . -s') do set LLNET_MODULE_NOW_STATUS=%%i

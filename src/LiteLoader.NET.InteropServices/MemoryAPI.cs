@@ -87,7 +87,7 @@ namespace LiteLoader.NET.InteropServices.Native
                 throw new MemoryCorruptedException(string.Empty);
         }
 
-        public static void operator_memmove(void* dst, void* src, size_t size)
+        public static void memmove(void* dst, void* src, size_t size)
         {
             if (internal_memmove(dst, src, size) != 0)
                 throw new MemoryCorruptedException(string.Empty);
